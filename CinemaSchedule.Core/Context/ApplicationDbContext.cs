@@ -16,7 +16,7 @@ namespace CinemaSchedule.Core.Context
             return new ApplicationDbContext();
         }
 
-        public DbSet<Cinema> Cinemas { get; set; }
+        public DbSet<Theatre> Theatres { get; set; }
         public DbSet<Movie> Movies { get; set; }
         public DbSet<MovieDay> MovieDays { get; set; }
         public DbSet<Session> Sessions { get; set; }

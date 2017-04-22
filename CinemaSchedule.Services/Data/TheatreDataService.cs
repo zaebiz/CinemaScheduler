@@ -4,11 +4,11 @@ using CinemaSchedule.Core.Models;
 namespace CinemaSchedule.Services.Data
 {
     /// <summary>
-    /// CRUD сервис фильмов
+    /// CRUD сервис кинотеатров
     /// </summary>
-    public class MovieDataService : DataServiceBase<Movie>
+    public class TheatreDataService : DataServiceBase<Theatre>
     {
-        public MovieDataService(ApplicationDbContext ctx) : base(ctx)
+        public TheatreDataService(ApplicationDbContext ctx) : base(ctx)
         {
         }
     }

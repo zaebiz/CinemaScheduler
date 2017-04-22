@@ -5,7 +5,7 @@ using CinemaSchedule.Core.Models;
 
 namespace CinemaSchedule.Core.Context
 {
-    class CinemaDbInitializer : DropCreateDatabaseAlways<ApplicationDbContext>
+    class CinemaDbInitializer : CreateDatabaseIfNotExists<ApplicationDbContext>
     {
         protected override void Seed(ApplicationDbContext context)
         {
@@ -17,19 +17,19 @@ namespace CinemaSchedule.Core.Context
             context.LookupRatings.AddRange(ratingList);
 
             // кинотеатры
-            var cinama1 = new Cinema()
+            var cinama1 = new Theatre()
             {
                 Name = "Октябрь",
                 MaxSpectatorsCount = 100,
             };
-            var cinama2 = new Cinema()
+            var cinama2 = new Theatre()
             {
                 Name = "Родина",
                 MaxSpectatorsCount = 100,
             };
 
-            context.Cinemas.Add(cinama1);
-            context.Cinemas.Add(cinama2);
+            context.Theatres.Add(cinama1);
+            context.Theatres.Add(cinama2);
 
             // фильмы
             var movie1 = new Movie()
@@ -63,19 +63,19 @@ namespace CinemaSchedule.Core.Context
             // дефолтное расписание
             var day1 = new MovieDay()
             {
-                Cinema = cinama1,
+                Theatre = cinama1,
                 Movie = movie1,
                 Date = DateTime.Now.Date,
             };
             var day2 = new MovieDay()
             {
-                Cinema = cinama2,
+                Theatre = cinama2,
                 Movie = movie3,
                 Date = DateTime.Now.Date,
             };
             var day3 = new MovieDay()
             {
-                Cinema = cinama1,
+                Theatre = cinama1,
                 Movie = movie3,
                 Date = DateTime.Now.Date.AddDays(1),
             };

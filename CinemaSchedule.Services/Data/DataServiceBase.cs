@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Threading.Tasks;
-using CinemaSchedule.Core;
 using CinemaSchedule.Core.Context;
 using CinemaSchedule.Core.Models;
 using CinemaSchedule.Core.Services;
 
-namespace CinemaSchedule.Services
+namespace CinemaSchedule.Services.Data
 {
     /// <summary>
     /// базовый generic сервис работы с данными через контекст EF

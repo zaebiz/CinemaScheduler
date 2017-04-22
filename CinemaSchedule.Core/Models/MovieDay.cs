@@ -31,7 +31,7 @@ namespace CinemaSchedule.Core.Models
         [Index("UniqueMovieDay", 3, IsUnique = true)]
         public DateTime Date { get; set; }
 
-        public virtual Cinema Cinema { get; set; }
+        public virtual Theatre Theatre { get; set; }
         public virtual Movie Movie { get; set; }
         public virtual ICollection<Session> Sessions { get; set; }
 

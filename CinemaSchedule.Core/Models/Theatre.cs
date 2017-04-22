@@ -11,7 +11,7 @@ namespace CinemaSchedule.Core.Models
     /// <summary>
     /// Модель кинотеатра
     /// </summary>
-    public class Cinema : IDbEntity
+    public class Theatre : IDbEntity
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
