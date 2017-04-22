@@ -11,7 +11,7 @@ namespace CinemaSchedule.Core.Models
     /// <summary>
     /// Модель описывающая фильм
     /// </summary>
-    public class Movie
+    public class Movie : IDbEntity
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }

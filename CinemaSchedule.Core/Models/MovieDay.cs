@@ -10,22 +10,24 @@ namespace CinemaSchedule.Core.Models
 {
     /// <summary>
     /// Расписание кинотеатра по датам.  
-    /// Можем использовать для функционала поиска :
+    /// Введен как отдельная сущность для удобства поиска :
     /// - по фильму (где идет и когда)
     /// - по кинотеатру (что идет и когда)
     /// - по дате (что и где идет)
     /// </summary>
-    public class MovieDay
+    public class MovieDay : IDbEntity
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Index("UniqueMovieDay", 1, IsUnique = true) ]
+        [Index("UniqueMovieDay", 1, IsUnique = true)]
         public int CinemaId { get; set; }
 
+        [Index]
         [Index("UniqueMovieDay", 2, IsUnique = true)]
         public int MovieId { get; set; }
 
+        [Index]
         [Index("UniqueMovieDay", 3, IsUnique = true)]
         public DateTime Date { get; set; }
 

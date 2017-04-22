@@ -9,12 +9,12 @@ using System.Threading.Tasks;
 namespace CinemaSchedule.Core.Models
 {
     /// <summary>
-    /// Расписание показа фильма в кинотеатре на определенную дату.  
+    /// Расписание сеансов на определенную дату.  
     /// </summary>
-    public class Session
+    public class Session : IDbEntity
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int Id { get; set; }
+        public int Id { get; set; }        
 
         public int MovieDayId { get; set; }
         public TimeSpan StartTime { get; set; }

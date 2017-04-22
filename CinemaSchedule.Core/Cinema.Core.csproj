@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Context\ApplicationDbContext.cs" />
     <Compile Include="Context\CinemaDbInitializer.cs" />
+    <Compile Include="DataServiceBase.cs" />
     <Compile Include="IDataService.cs" />
     <Compile Include="Models\Cinema.cs" />
     <Compile Include="Models\IDbEntity.cs" />
