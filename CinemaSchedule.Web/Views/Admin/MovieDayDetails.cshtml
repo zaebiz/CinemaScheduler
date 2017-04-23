@@ -47,5 +47,30 @@
     </div>
 
     @Html.HiddenFor(m => m.MovieDay.Id)
+
+    <hr/>
+    <h4>Сеансы</h4>
+
+    <a href="@Url.Action("SessionDetails", new {movieDayId = Model.MovieDay.Id})">Добавить сеанс</a>
+
+    <table class="table table-hover table-striped table-bordered">
+        <tbody>
+            @foreach (var session in Model.MovieDay.Sessions)
+                {
+
+                <tr>
+                    <td style="width: 100px">
+                        <a href="@Url.Action("SessionDetails", new {sessionId = session.Id, movieDayId = Model.MovieDay.Id})">
+                            @session.StartTime
+                        </a>                        
+                    </td>
+                    <td style="width: 100px">
+                        <a href="@Url.Action("DeleteSession", new {dayId = session.Id})">Удалить</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
     <button class="btn btn-primary btn-sm" type="submit">Сохранить</button>
 }

@@ -68,7 +68,9 @@
                             @movieDay.Movie.Name
                         </td>
                         <td style="width: 200px">
-                            @string.Join(" ", @movieDay.Sessions.Select(x => x.StartTime.ToString(@"hh\:mm")))
+                            @string.Join(" ", @movieDay.Sessions
+                                .OrderBy(x => x.StartTime)
+                                .Select(x => x.StartTime))
                         </td>
                     </tr>
                 </tbody>

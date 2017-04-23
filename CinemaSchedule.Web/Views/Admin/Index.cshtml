@@ -5,6 +5,8 @@
 
 <h2>Расписание кинотеатров</h2>
 
+<a href="@Url.Action("MovieDayDetails")">Добавить фильм</a>
+
 <div class="row">
     <table class="table table-hover table-striped table-bordered">
         <thead>
@@ -31,7 +33,7 @@
                             @movieDay.Movie.Name
                         </td>
                         <td style="width: 200px">
-                            @string.Join(" ", @movieDay.Sessions.Select(x => x.StartTime.ToString(@"hh\:mm")))
+                            @string.Join(" ", @movieDay.Sessions.Select(x => x.StartTime))
                         </td>
                         <td style="width: 100px">
                             <a href="@Url.Action("MovieDayDetails", new {dayId = movieDay.Id})">Редактировать</a>

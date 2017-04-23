@@ -87,57 +87,57 @@ namespace CinemaSchedule.Core.Context
             var session1 = new Session()
             {
                 MovieDay = day1,
-                StartTime = new TimeSpan(11, 0, 0),
+                StartTime = "11:00",
                 TicketPrice = 100m
             };
             var session2 = new Session()
             {
                 MovieDay = day1,
-                StartTime = new TimeSpan(14, 0, 0),
+                StartTime = "14:00",
                 TicketPrice = 100m
             };
             var session3 = new Session()
             {
                 MovieDay = day1,
-                StartTime = new TimeSpan(17, 0, 0),
+                StartTime = "17:00",
                 TicketPrice = 200m
             };
 
             var session4 = new Session()
             {
                 MovieDay = day2,
-                StartTime = new TimeSpan(11, 0, 0),
+                StartTime = "12:00",
                 TicketPrice = 200m
             };
             var session5 = new Session()
             {
                 MovieDay = day2,
-                StartTime = new TimeSpan(15, 0, 0),
+                StartTime = "15:00",
                 TicketPrice = 200m
             };
             var session6 = new Session()
             {
                 MovieDay = day2,
-                StartTime = new TimeSpan(19, 0, 0),
+                StartTime = "19:00",
                 TicketPrice = 500m
             };
 
             var session7 = new Session()
             {
                 MovieDay = day3,
-                StartTime = new TimeSpan(12, 0, 0),
+                StartTime = "14:00",
                 TicketPrice = 500m
             };
             var session8 = new Session()
             {
                 MovieDay = day3,
-                StartTime = new TimeSpan(18, 0, 0),
+                StartTime = "18:00",
                 TicketPrice = 500m
             };
             var session9 = new Session()
             {
                 MovieDay = day3,
-                StartTime = new TimeSpan(22, 0, 0),
+                StartTime = "22:00",
                 TicketPrice = 800m
             };
 

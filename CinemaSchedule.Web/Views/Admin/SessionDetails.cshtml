@@ -1,0 +1,33 @@
+﻿@model CinemaSchedule.Core.Models.Session
+@{
+    ViewBag.Title = "Редактирование сеанса";
+}
+
+<h2>Детали сеанса</h2>
+
+@using (Html.BeginForm("SessionDetails", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <div class="col-md-4 control-label">
+            @Html.LabelFor(m => m.StartTime)
+        </div>
+        <div class="col-md-6">
+            @Html.TextBoxFor(m => m.StartTime, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-4 control-label">
+            @Html.LabelFor(m => m.TicketPrice)
+        </div>
+        <div class="col-md-6">
+            @Html.TextBoxFor(m => m.TicketPrice, new { @class = "form-control" })
+        </div>
+    </div>
+
+    @Html.HiddenFor(m => m.Id)
+    @Html.HiddenFor(m => m.MovieDayId)
+    <button class="btn btn-primary btn-sm" type="submit">Сохранить</button>
+}
