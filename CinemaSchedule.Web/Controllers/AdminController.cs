@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using Cinema.Infrastructure;
 using CinemaSchedule.Core.Models;
 using CinemaSchedule.Core.Models.Filters;
 using CinemaSchedule.Core.Services;
@@ -11,6 +12,7 @@ using CinemaSchedule.Core.ViewModels;
 
 namespace Cinema.Controllers
 {
+    [PortalExceptionFilter]
     public class AdminController : Controller
     {
         private readonly ILookupService _lookupSvc;
@@ -132,7 +134,5 @@ namespace Cinema.Controllers
 
             return RedirectToAction("MovieDayDetails", new {dayId = session.MovieDayId});
         }
-
-
     }
 }

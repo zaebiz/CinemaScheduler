@@ -59,6 +59,7 @@
     <Compile Include="Context\ApplicationDbContext.cs" />
     <Compile Include="Context\CinemaDbInitializer.cs" />
     <Compile Include="Extensions\QueryableEx.cs" />
+    <Compile Include="Extensions\StringEx.cs" />
     <Compile Include="Models\Filters\ISearchFilter.cs" />
     <Compile Include="Models\Filters\MovieDayFilter.cs" />
     <Compile Include="Models\Filters\SessionFilter.cs" />

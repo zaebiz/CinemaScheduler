@@ -20,10 +20,11 @@ namespace CinemaSchedule.Core.Models
         public int MovieDayId { get; set; }
 
         [Required(ErrorMessage = "Не указано  время начала сеанса"), DisplayName("Время начала")]
-        [RegularExpression(@"((([0-1][0-9])|(2[0-3]))(:[0-5][0-9])(:[0-5][0-9])?)", ErrorMessage = "Задайте время между 00:00 to 23:59")]
+        [RegularExpression(@"((([0-1][0-9])|(2[0-3]))(:[0-5][0-9])(:[0-5][0-9])?)", ErrorMessage = "Задайте время между 00:00 и 23:59")]
         public string StartTime { get; set; }
 
-        [Required(ErrorMessage = "Не указана цена"), DisplayName("Цена билета"), DataType(DataType.Currency, ErrorMessage = "Некорректная цена")]
+        [Required(ErrorMessage = "Не указана цена"), DisplayName("Цена билета")] 
+        [DataType(DataType.Currency, ErrorMessage = "Некорректная цена")]
         public decimal TicketPrice { get; set; }
 
         public virtual MovieDay MovieDay { get; set; }

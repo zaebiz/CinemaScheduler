@@ -42,7 +42,7 @@ namespace CinemaSchedule.Core.Context
             {
                 Name = "Стражи галактики 2",
                 ReleaseDate = DateTime.Now.Date.AddDays(10),
-                MovieRatingLookup = rating2
+                MovieRatingLookup = rating2,
             };
             var movie3 = new Movie()
             {

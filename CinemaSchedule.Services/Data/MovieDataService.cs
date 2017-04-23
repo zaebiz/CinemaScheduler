@@ -1,4 +1,5 @@
-﻿using CinemaSchedule.Core.Context;
+﻿using System.Threading.Tasks;
+using CinemaSchedule.Core.Context;
 using CinemaSchedule.Core.Models;
 
 namespace CinemaSchedule.Services.Data

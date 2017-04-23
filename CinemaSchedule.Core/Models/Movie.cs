@@ -21,5 +21,5 @@ namespace CinemaSchedule.Core.Models
 
         public int MovieRatingLookupId { get; set; }
         public MovieRatingLookup MovieRatingLookup { get; set; }
-}
+    }
 }

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using AutoMapper;
+using Cinema.Infrastructure;
 using CinemaSchedule.Core.Context;
 using CinemaSchedule.Core.Models;
 using CinemaSchedule.Core.Models.Filters;
@@ -13,6 +14,7 @@ using CinemaSchedule.Core.ViewModels;
 
 namespace Cinema.Controllers
 {
+    [PortalExceptionFilter]
     public class HomeController : Controller
     {
         private readonly IDataService<MovieDay> _scheduleSvc;
