@@ -10,9 +10,6 @@ namespace Cinema.Infrastructure
     {
         public void OnException(ExceptionContext filterContext)
         {
-            //var result = PortalTools.LogExceptionInfo(filterContext.Exception);
-            //var errMsg = result.Item1;
-
             var urlHelper = new UrlHelper(filterContext.RequestContext);
             filterContext.Result = new RedirectResult(
                 urlHelper.Action("Error", "Common", new { msg = filterContext.Exception.Message })
