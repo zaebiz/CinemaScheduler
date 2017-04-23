@@ -15,7 +15,7 @@
                     <th>Дата</th>
                     <th>Фильм</th>
                     <th>Сеансы</th>
-                    <th>Сеансы</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>                    
@@ -33,7 +33,9 @@
                             @movieDay.Movie.Name
                         </td>
                         <td style="width: 200px">
-                            @string.Join(" ", @movieDay.Sessions.Select(x => x.StartTime))
+                            @string.Join(" ", @movieDay.Sessions
+                                .OrderBy(x => x.StartTime)
+                                .Select(x => x.StartTime))
                         </td>
                         <td style="width: 100px">
                             <a href="@Url.Action("MovieDayDetails", new {dayId = movieDay.Id})">Редактировать</a>

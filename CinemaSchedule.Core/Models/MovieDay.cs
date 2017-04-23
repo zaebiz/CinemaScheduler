@@ -21,15 +21,15 @@ namespace CinemaSchedule.Core.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        [Required, DisplayName("Кинотеатр")]
+        [Required(ErrorMessage = "Не указан кинотеатр"), DisplayName("Кинотеатр")]
         [Index("UniqueMovieDay", 1, IsUnique = true)]
         public int TheatreId { get; set; }
 
-        [Required, DisplayName("Фильм")]
+        [Required(ErrorMessage = "Не указан фильм"), DisplayName("Фильм")]
         [Index("UniqueMovieDay", 2, IsUnique = true)]
         public int MovieId { get; set; }
 
-        [Required, DisplayName("Дата"), DataType(DataType.Date)]
+        [Required(ErrorMessage = "Не указана дата"), DisplayName("Дата"), DataType(DataType.Date, ErrorMessage = "Некорректная дата")]
         //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [Index("UniqueMovieDay", 3, IsUnique = true)]
         public DateTime Date { get; set; }

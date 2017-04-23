@@ -61,6 +61,7 @@
     <Compile Include="Extensions\QueryableEx.cs" />
     <Compile Include="Models\Filters\ISearchFilter.cs" />
     <Compile Include="Models\Filters\MovieDayFilter.cs" />
+    <Compile Include="Models\Filters\SessionFilter.cs" />
     <Compile Include="Services\IDataService.cs" />
     <Compile Include="Models\Theatre.cs" />
     <Compile Include="Models\IDbEntity.cs" />

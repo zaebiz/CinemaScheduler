@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace CinemaSchedule.Core.Models.Filters
 {
     /// <summary>
-    /// Динамическмй фильтр для расписания кинотеатров
+    /// Динамическмй фильтр для поиска по расписанию кинотеатров
     /// </summary>
     public class MovieDayFilter : ISearchFilter<MovieDay>
     {
