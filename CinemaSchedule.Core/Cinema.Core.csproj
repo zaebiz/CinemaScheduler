@@ -69,6 +69,8 @@
     <Compile Include="Models\MovieDay.cs" />
     <Compile Include="Models\Session.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\ILookupService.cs" />
+    <Compile Include="ViewModels\MovieDayViewModel.cs" />
     <Compile Include="ViewModels\ScheduleViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,0 +1,43 @@
+﻿@model List<CinemaSchedule.Core.Models.MovieDay>
+@{
+    ViewBag.Title = "Редактирование расписания";
+}
+
+<h2>Расписание кинотеатров</h2>
+
+<div class="row">
+    <table class="table table-hover table-striped table-bordered">
+        <thead>
+                <tr>
+                    <th>Кинотеатр</th>
+                    <th>Дата</th>
+                    <th>Фильм</th>
+                    <th>Сеансы</th>
+                    <th>Сеансы</th>
+                </tr>
+            </thead>
+            <tbody>                    
+                @foreach (var movieDay in Model)
+                {
+
+                    <tr>
+                        <td style="width: 100px">
+                            <b>@movieDay.Theatre.Name</b>
+                        </td>
+                        <td style="width: 100px">
+                            @movieDay.Date.ToShortDateString()
+                        </td>
+                        <td style="width: 100px">
+                            @movieDay.Movie.Name
+                        </td>
+                        <td style="width: 200px">
+                            @string.Join(" ", @movieDay.Sessions.Select(x => x.StartTime.ToString(@"hh\:mm")))
+                        </td>
+                        <td style="width: 100px">
+                            <a href="@Url.Action("MovieDayDetails", new {dayId = movieDay.Id})">Редактировать</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+    </table>    
+</div>

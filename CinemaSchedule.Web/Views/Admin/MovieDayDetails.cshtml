@@ -1,0 +1,51 @@
+﻿@using Cinema.Infrastructure
+@model CinemaSchedule.Core.ViewModels.MovieDayViewModel
+
+@{
+    ViewBag.Title = "Расписание на день";
+}
+
+<h2>Расписание на @Model.MovieDay.Date.ToShortDateString()</h2>
+
+@using (Html.BeginForm("MovieDayDetails", "Admin", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <div class="col-md-4 control-label">
+            @Html.LabelFor(m => m.MovieDay.TheatreId)
+        </div>
+        <div class="col-md-6">
+            @Html.DropDownListFor(
+                    m => m.MovieDay.TheatreId,
+                    Html.CreateSelectListFromLookup(Model.TheatreList),
+                    string.Empty,
+                    new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-4 control-label">
+            @Html.LabelFor(m => m.MovieDay.MovieId)
+        </div>
+        <div class="col-md-6">
+            @Html.DropDownListFor(
+                m => m.MovieDay.MovieId,
+                Html.CreateSelectListFromLookup(Model.MovieList),
+                string.Empty,
+                new { @class = "form-control" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-4 control-label">
+            @Html.LabelFor(m => m.MovieDay.Date)
+        </div>
+        <div class="col-md-6">
+            @Html.TextBoxFor(m => m.MovieDay.Date, "{0:dd/MM/yyyy}", new { @class = "form-control" })
+        </div>
+    </div>
+
+    @Html.HiddenFor(m => m.MovieDay.Id)
+    <button class="btn btn-primary btn-sm" type="submit">Сохранить</button>
+}

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
@@ -20,14 +21,16 @@ namespace CinemaSchedule.Core.Models
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
+        [Required, DisplayName("Кинотеатр")]
         [Index("UniqueMovieDay", 1, IsUnique = true)]
         public int TheatreId { get; set; }
 
-        [Index]
+        [Required, DisplayName("Фильм")]
         [Index("UniqueMovieDay", 2, IsUnique = true)]
         public int MovieId { get; set; }
 
-        [Index]
+        [Required, DisplayName("Дата"), DataType(DataType.Date)]
+        //[DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:dd/MM/yyyy}")]
         [Index("UniqueMovieDay", 3, IsUnique = true)]
         public DateTime Date { get; set; }
 

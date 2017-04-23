@@ -53,6 +53,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Data\LookupService.cs" />
     <Compile Include="Data\TheatreDataService.cs" />
     <Compile Include="Data\DataServiceBase.cs" />
     <Compile Include="Data\MovieDataService.cs" />

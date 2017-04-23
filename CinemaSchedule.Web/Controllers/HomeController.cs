@@ -29,18 +29,32 @@ namespace Cinema.Controllers
             return RedirectToAction("Schedule");
         }
 
-        [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
+        //[AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
+        [HttpGet]
+        public async Task<ActionResult> Schedule()
+        {           
+            var model = new ScheduleViewModel()
+            {
+                Filter = new MovieDayFilter()
+            };
+
+            model = await CreateSchedule(model);
+            return View(model);
+        }
+
+        [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Schedule(ScheduleViewModel model)
-        {           
-            if (model == null)
-            {
-                model = new ScheduleViewModel()
-                {
-                    Filter = new MovieDayFilter()
-                };
-            }
+        {
+            if (ModelState.IsValid)
+                model = await CreateSchedule(model);
 
+            return View(model);
+        }
+
+        [NonAction]
+        public async Task<ScheduleViewModel> CreateSchedule(ScheduleViewModel model)
+        {
             model.TheatreList = await _lookupSvc.GetTheatresLookup();
             model.MovieList = await _lookupSvc.GetMoviesLookup();
 
@@ -48,7 +62,9 @@ namespace Cinema.Controllers
                 .GroupBy(x => x.Theatre.Name)
                 .ToDictionary(x => x.Key, y => y.ToList());
 
-            return View(model);
+            return model;
         }
+
+
     }
 }
