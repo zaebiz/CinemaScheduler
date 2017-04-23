@@ -23,7 +23,7 @@ namespace CinemaSchedule.Services.Data
         {
             var sessionsFromDb = await GetList(new SessionFilter()
             {
-                MovieDayId = newSession.Id
+                MovieDayId = newSession.MovieDayId
             });
 
             var newSessionStartTime = newSession.StartTime.ConvertToTimeSpan();

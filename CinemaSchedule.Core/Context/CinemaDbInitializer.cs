@@ -40,7 +40,7 @@ namespace CinemaSchedule.Core.Context
             };
             var movie2 = new Movie()
             {
-                Name = "Стражи галактики 2",
+                Name = "Стражи галактики 2 (премьера в будущем)",
                 ReleaseDate = DateTime.Now.Date.AddDays(10),
                 MovieRatingLookup = rating2,
             };
