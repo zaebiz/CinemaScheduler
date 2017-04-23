@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using CinemaSchedule.Core.Models;
+using CinemaSchedule.Core.Models.Filters;
 
 namespace CinemaSchedule.Core.ViewModels
 {
@@ -12,10 +13,10 @@ namespace CinemaSchedule.Core.ViewModels
     /// </summary>
     public class ScheduleViewModel
     {
-        public List<MovieDay> Schedule { get; set; }
+        public Dictionary<string, List<MovieDay>> Schedule { get; set; }
 
         public List<Lookup> TheatreList { get; set; }
         public List<Lookup> MovieList { get; set; }
-        public ScheduleFilter Filter { get; set; }
+        public MovieDayFilter Filter { get; set; }
     }
 }

@@ -21,7 +21,7 @@ namespace CinemaSchedule.Core.Models
         public int Id { get; set; }
 
         [Index("UniqueMovieDay", 1, IsUnique = true)]
-        public int CinemaId { get; set; }
+        public int TheatreId { get; set; }
 
         [Index]
         [Index("UniqueMovieDay", 2, IsUnique = true)]

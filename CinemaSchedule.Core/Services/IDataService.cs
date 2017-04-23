@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using CinemaSchedule.Core.Models.Filters;
 
 namespace CinemaSchedule.Core.Services
 {
@@ -9,7 +10,7 @@ namespace CinemaSchedule.Core.Services
     public interface IDataService<T>
     {
         Task<T> GetItem(int id);
-        Task<List<T>> GetList();
+        Task<List<T>> GetList(ISearchFilter<T> filter = null);
         Task<T> AddItem(T item);
         Task<T> UpdateItem(T item);
         Task DeleteItem(T item);

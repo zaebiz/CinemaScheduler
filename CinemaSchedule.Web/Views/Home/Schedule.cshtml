@@ -5,7 +5,7 @@
     ViewBag.Title = "Расписание";
 }
 
-<div class="jumbotron row">
+<div class="row">
     <h1>Расписание</h1>
     @*<p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
     <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>*@
@@ -39,11 +39,43 @@
             </div>
         </div>
 
-        <button class="btn btn-primary btn-lg" type="submit">Показать</button>
+        <button class="btn btn-primary btn-sm" type="submit">Показать</button>
     }
+    <hr/>
 </div>
 
 <div class="row">
+    @foreach (var theatre in Model.Schedule)
+    {
+        <h4>@theatre.Key</h4>
+        <table class="table table-hover table-striped table-bordered">
+            @foreach (var movieDay in theatre.Value)
+            {
+                @*<thead>
+                        <tr>
+                            <th>Кинотеатр</th>
+                            <th>Дата</th>
+                            <th>Фильм</th>
+                            <th>Сеансы</th>
+                        </tr>
+                    </thead>*@
+                <tbody>
+                    <tr>
+                        <td style="width: 100px">
+                            @movieDay.Date.ToShortDateString()
+                        </td>
+                        <td style="width: 100px">
+                            @movieDay.Movie.Name
+                        </td>
+                        <td style="width: 300px">
+                            @string.Join(" ", @movieDay.Sessions.Select(x => x.StartTime.ToString(@"hh\:mm")))
+                        </td>
+                    </tr>
+                </tbody>
+            }
+        </table>
+        <hr />
+    }
     
 </div>
 

@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using CinemaSchedule.Core.Context;
+using CinemaSchedule.Core.Extensions;
 using CinemaSchedule.Core.Models;
+using CinemaSchedule.Core.Models.Filters;
 using CinemaSchedule.Core.Services;
 
 namespace CinemaSchedule.Services.Data
 {
     /// <summary>
-    /// базовый generic сервис работы с данными через контекст EF
+    /// базовый generic CRUD сервис работы с данными через контекст EF
     /// </summary>
     public class DataServiceBase<T> : IDataService<T> 
         where T : class, IDbEntity
@@ -21,21 +24,28 @@ namespace CinemaSchedule.Services.Data
             _ctx = ctx;
         }
 
-        public async Task<T> GetItem(int id)
+        protected virtual IQueryable<T> GetQueryable()
+        {
+            return _ctx.Set<T>();
+        }
+
+        public virtual async Task<T> GetItem(int id)
         {
             if (id <= default(int))
                 throw new ArgumentOutOfRangeException($"Некорректный id = {id}");
 
-            return await _ctx.Set<T>()
+            return await GetQueryable()
                 .FirstOrDefaultAsync(x => x.Id == id);
         }
 
-        public async Task<List<T>> GetList()
+        public virtual async Task<List<T>> GetList(ISearchFilter<T> filter = null)
         {
-            return await _ctx.Set<T>().ToListAsync();
+            return await GetQueryable()
+                .ApplyFilter(filter)
+                .ToListAsync();
         }
 
-        public async Task<T> AddItem(T item)
+        public virtual async Task<T> AddItem(T item)
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item), "Не задан объект");
@@ -46,7 +56,7 @@ namespace CinemaSchedule.Services.Data
             return item;
         }
 
-        public async Task<T> UpdateItem(T item)
+        public virtual async Task<T> UpdateItem(T item)
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item), "Не задан объект");
@@ -61,7 +71,7 @@ namespace CinemaSchedule.Services.Data
             return item;
         }
 
-        public async Task DeleteItem(T item)
+        public virtual async Task DeleteItem(T item)
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item), "Не задан объект");

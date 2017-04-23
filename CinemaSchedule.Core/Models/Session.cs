@@ -18,7 +18,7 @@ namespace CinemaSchedule.Core.Models
 
         public int MovieDayId { get; set; }
         public TimeSpan StartTime { get; set; }
-        public int TicketPrice { get; set; }
+        public decimal TicketPrice { get; set; }
 
         public virtual MovieDay MovieDay { get; set; }
     }
