@@ -15,17 +15,13 @@ namespace Cinema.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IDataService<Theatre> _theatreSvc;
-        private readonly IDataService<Movie> _movieSvc;
         private readonly IDataService<MovieDay> _scheduleSvc;
-        private readonly IMapper _mapper;
+        private readonly ILookupService _lookupSvc;
 
-        public HomeController(IDataService<Theatre> theatreSvc, IDataService<Movie> movieSvc, IDataService<MovieDay> scheduleSvc, IMapper mapper)
+        public HomeController(IDataService<MovieDay> scheduleSvc, ILookupService lookupSvc)
         {
-            _theatreSvc = theatreSvc;
-            _movieSvc = movieSvc;
             _scheduleSvc = scheduleSvc;
-            _mapper = mapper;
+            _lookupSvc = lookupSvc;
         }
 
         public ActionResult Index()
@@ -34,6 +30,7 @@ namespace Cinema.Controllers
         }
 
         [AcceptVerbs(HttpVerbs.Get | HttpVerbs.Post)]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Schedule(ScheduleViewModel model)
         {           
             if (model == null)
@@ -44,13 +41,8 @@ namespace Cinema.Controllers
                 };
             }
 
-            model.TheatreList = (await _theatreSvc.GetList())
-                .Select(x => _mapper.Map<Lookup>(x))
-                .ToList();
-
-            model.MovieList = (await _movieSvc.GetList())
-                .Select(x => _mapper.Map<Lookup>(x))
-                .ToList();
+            model.TheatreList = await _lookupSvc.GetTheatresLookup();
+            model.MovieList = await _lookupSvc.GetMoviesLookup();
 
             model.Schedule = (await _scheduleSvc.GetList(model.Filter))
                 .GroupBy(x => x.Theatre.Name)

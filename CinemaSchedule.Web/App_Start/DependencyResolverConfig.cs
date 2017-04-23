@@ -21,7 +21,7 @@ namespace Cinema
             builder
                 .RegisterAssemblyTypes(AppDomain.CurrentDomain.GetAssemblies())
                 .Where(x => x.FullName.StartsWith("CinemaSchedule.Services"))
-                .Where(x => x.Name.EndsWith("DataService"))
+                .Where(x => x.Name.EndsWith("Service"))
                 .AsSelf()
                 .AsImplementedInterfaces()
                 .InstancePerRequest();
